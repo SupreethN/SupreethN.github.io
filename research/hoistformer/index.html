@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="HOIST-Former: Hand-held Objects Identification, Segmentation, and Tracking in the Wild">
+    <meta name="keywords" content="HOIST, HOIST-Former, Hand-held objects">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOIST-Former: Hand-held Objects Identification, Segmentation, and Tracking in the Wild</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!--<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://keunhong.com">
+                <span class="icon">
+                    <i class="fas fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://hypernerf.github.io">
+                        HyperNeRF
+                    </a>
+                    <a class="navbar-item" href="https://nerfies.github.io">
+                        Nerfies
+                    </a>
+                    <a class="navbar-item" href="https://latentfusion.github.io">
+                        LatentFusion
+                    </a>
+                    <a class="navbar-item" href="https://photoshape.github.io">
+                        PhotoShape
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>-->
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">HOIST-Former: Hand-held Objects Identification, Segmentation, and Tracking in the Wild</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="https://supreethn.github.io/" target="_blank">Supreeth Narasimhaswamy</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://huyanh995.github.io/" target="_blank">Huy Anh Nguyen</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block no-url-authors">
+                            <a>Lihan Huang</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://www3.cs.stonybrook.edu/~minhhoai/" target="_blank">Minh Hoai</a><sup>1,2</sup>,
+                        </span>
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Stony Brook University, USA, <sup>2</sup>VinAI Research, Vietnam</span>
+                    </div>
+                    <p> CVPR 2024</p>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://drive.google.com/file/d/104Bsa61Fio-5fJtAAksjyT15hOWoyV_W/view" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                                <a href="https://drive.google.com/file/d/11Y-kHe4ixWjldY1ZyhOyR2Yfchj9S0-D/view" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="far fa-images"></i>
+                                    </span>
+                                    <span>Data</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <img src="./static/figures/teaser.jpg" class="interpolation-image" alt="Image."/>
+            <h2 class="content has-text-justified">
+                <b>Identification, segmentation, and tracking of hand-held objects.</b> Each row displays selected frames from a single video. Within each row, a distinct hand-held object is assigned a unique tracking ID and is consistently represented in the same color.      
+            </h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    We address the challenging task of identifying, segmenting, and tracking hand-held objects, 
+                    which is crucial for applications such as human action segmentation and performance evaluation. 
+                    This task is particularly challenging due to heavy occlusion, rapid motion, and the transitory
+                    nature of objects being hand-held, where an object may be held, released, and subsequently picked up again. 
+                    To tackle these challenges, we have developed a novel transformer-based architecture called HOIST-Former. 
+                    HOIST-Former is adept at spatially and temporally segmenting hands and objects by iteratively pooling features 
+                    from each other, ensuring that the processes of identification, segmentation, and
+                    tracking of hand-held objects depend on the hands’ positions and their contextual appearance. We further refine
+                    HOIST-Former with a contact loss that focuses on areas where hands are in contact with objects. 
+                    Moreover, we also contribute an in-the-wild video dataset called HOIST, which comprises 4,125 videos complete with bounding boxes, segmentation masks, and tracking IDs for hand-held objects.
+                    Through experiments on the HOIST dataset and two additional public datasets, we demonstrate the efficacy of
+                    HOIST-Former in segmenting and tracking hand-held objects.
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Architecture. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">HOIST-Former Architecture</h2>
+                <img src="./static/figures/hoist-architecture.jpg" class="interpolation-image" alt="Image." width="75%" style="margin-bottom: 20px;"/><br>
+                <h2 class="content has-text-justified">
+                    HOIST-Former consists of a backbone network, a pixel decoder, and a transformer decoder. 
+                    The input video is initially processed through the backbone network and the pixel decoder to
+                    generate high-resolution spatio-temporal features F. The transformer decoder operates on F, 
+                    decoding a set of N hand queries and their corresponding object queries, resulting in N spatio-temporal 
+                    hand masks and corresponding object masks.
+                </h2>
+            </div>
+        <!--/ Architecture. -->
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Architecture. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Hand-Object Transformer Decoder</h2>
+                <img src="./static/figures/hoist-decoder.jpg" class="interpolation-image" alt="Image." style="margin-bottom: 20px;"/>
+                <h2 class="content has-text-justified">
+                    The Hand-Object Transformer Decoder features a network architecture with L layers. This figure demonstrates the operational
+                    flow of a single layer, which includes two mask attention modules and two cross-attention modules. The inputs for this layer consist of N
+                    sets of four elements each: a hand query, an object query, a spatio-temporal hand mask, and a spatio-temporal object mask. The outputs of
+                    this layer are the correspondingly updated versions of these entities.        
+                </h2>
+            </div>
+        <!--/ Architecture. -->
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">HOIST Dataset</h2>
+                <div class="content has-text-justified">
+                    We have collected and annotated a large-scale in-the-wild video dataset, named HOIST, a contribution of this work. 
+                    Specifically, for each hand-held object in the video, we annotate its segmentation mask and 
+                    assign a tracking instance ID that persists throughout the video. Our dataset comprises 4,228 
+                    videos with approximately 85,000 frames in total. The HOIST dataset includes numerous videos 
+                    featuring hand-held objects within challenging and unconstrained environments, which can be 
+                    used to train robust methods for hand-held object segmentation and tracking.
+                </div>
+            </div>
+        </div>
+        <img src="./static/figures/hoist_data.jpg" class="interpolation-image" alt="Image."/>
+        <h2 class="content has-text-justified">
+            <b>Sample videos from HOIST dataset.</b> Each row displays selected frames from a single video. Within each row, a distinct hand-held object is assigned a unique tracking ID and is consistently represented in the same color.
+            Rows (1) and (2) demonstrate object transformations, where one object splits into two or more instances, each with a different tracking ID. Row (3) displays significant object occlusion, with hands blocking a large part of objects or another hand. Row (4) illustrates the challenge of distinguishing similar instances in repetitive tasks. Row (5) presents instances with very similar textures, where one hand is in contact with multiple instances.      
+        </h2>
+        <br> <br> <br>
+        <img src="./static/figures/hoist_data2.jpg" class="interpolation-image" alt="Image."/>
+        <h2 class="content has-text-justified">
+            <b>Diverse data.</b> Sample frames from HOIST. HOIST dataset contains videos with diverse scenes, camera views, object sizes, and occlusions.
+        </h2>
+        <!--/ HOIST Dataset. -->
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Architecture. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">HOIST-Former Qualitative Results</h2>
+            </div>
+        </div>
+        <img src="./static/figures/qual_res1.jpg" class="interpolation-image" alt="Image."/>
+        <img src="./static/figures/qual_res2.jpg" class="interpolation-image" alt="Image."/>
+        <h2 class="content has-text-justified">
+            <b>HOIST-Former Qualitative Results.</b>
+            Each row displays selected frames from a single video. Within each row, a distinct hand- held object is assigned a unique tracking ID and is consistently represented in the same color.
+        </h2>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@InProceedings{sn_hoist_cvpr_2024,
+    author = {Supreeth Narasimhaswamy and Huy Anh Nguyen and Lihan Huang and Minh Hoai},
+    title = {HOIST-Former: Hand-held Objects Identification, Segmentation, and Tracking in the Wild},
+    booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year = {2024},
+}
+        </code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
