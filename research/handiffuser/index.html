@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="HanDiffuser">
+  <meta name="keywords" content="Diffusion, Humans, Hands">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HanDiffuser: Text-to-Image Generation With Realistic Hand Appearances</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">HanDiffuser: Text-to-Image Generation With Realistic Hand Appearances</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://supreethn.github.io" target="_blank">Supreeth Narasimhaswamy</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://uttaranb127.github.io" target="_blank">Uttaran Bhattacharya</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.adobe.com/person/xiang-chen/" target="_blank">Xiang Chen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=okBrMn8AAAAJ&hl=en" target="_blank">Ishita Dasgupta</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.adobe.com/person/saayan-mitra/" target="_blank">Saayan Mitra</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www3.cs.stonybrook.edu/~minhhoai/" target="_blank">Minh Hoai</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Stony Brook University</span>,
+            <span class="author-block"><sup>2</sup>Adobe</span>
+          </div>
+          <p> CVPR 2024</p>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+      
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.01693" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/figures/teaser1.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+      <br> <br> <br>
+      <img src="./static/figures/teaser2.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+      <h2 class="subtitle has-text-centered">
+        HanDiffuser generates images by leveraging topological and geometric hand priors.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Text-to-image generative models can generate high-quality humans, 
+            but realism is lost when generating hands. Common artifacts include irregular hand poses, 
+            shapes, incorrect numbers of fingers, and physically implausible finger orientations. 
+            To generate images with realistic hands, we propose a novel diffusion-based architecture called HanDiffuser 
+            that achieves realism by injecting hand embeddings in the generative process. HanDiffuser consists of two 
+            components: a Text-to-Hand-Params diffusion model to generate SMPL-Body and MANO-Hand parameters from input 
+            text prompts, and a Text-Guided Hand-Params-to- Image diffusion model to synthesize images by conditioning 
+            on the prompts and hand parameters generated by the previous component. We incorporate multiple aspects 
+            of hand representation, including 3D shapes and joint-level finger positions, orientations and articulations,
+            for robust learning and reliable performance during inference. We conduct extensive quantitative and 
+            qualitative experiments and perform user studies to demonstrate the efficacy of our method in generating 
+            images with high-quality hands.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Architecture. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Architecture</h2>
+        
+        <img src="./static/figures/handiffuser_architecture.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+      <h2 class="subtitle has-text-centered">
+        HanDiffuser has two components. The first component generates 3D body and hands from text. The second component conditions the image generation on the text and generated hands.
+      </h2>
+      </div>
+    </div>
+    <!--/ Architecture. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <!-- T2H Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Intermediate Results: Text-to-Hand-Params (T2H)</h2>
+        
+        <img src="./static/figures/compA_res.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+      <h2 class="subtitle has-text-centered">
+        Text-to-Hand-Params (T2H) generates SMPL-H humans from text prompts.
+      </h2>
+      </div>
+    </div>
+    <!--/ T2H Results. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <!-- Full Pipeline Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Full Pipeline Results: T2H + H-T2I </h2>
+        
+        <img src="./static/figures/supp5.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <img src="./static/figures/supp6.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <img src="./static/figures/supp7.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <img src="./static/figures/supp8.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <img src="./static/figures/supp9.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>      
+        <img src="./static/figures/supp10.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>      
+      <h2 class="subtitle has-text-centered">
+        Given a text prompt, HanDiffuser generates hand parameters (T2H) and conditions image generation on hand parameters and text (H-T2I).
+      </h2>
+      </div>
+    </div>
+    <!--/ Full Pipeline Results. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <!-- More SD vs HanDiffuser Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> More Results: Stable Diffusion vs HanDiffuser</h2>
+        
+        <img src="./static/figures/supp1.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <br> <br> <br>
+
+        <img src="./static/figures/supp2.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <br> <br> <br>
+
+        <img src="./static/figures/supp3.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+        <br> <br> <br>
+        
+        <img src="./static/figures/supp4.jpg"
+                 class="interpolation-image"
+                 alt="Image."/>
+      <h2 class="subtitle has-text-centered">
+        Stable Diffusion vs HanDiffuser: By conditioning image generation on hand parameters, we can improve hands in images.
+      </h2>
+      </div>
+    </div>
+    <!--/ More SD vs HanDiffuser2H Results. -->
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{sn_handiffuser_cvpr_2024, 
+      author = {Supreeth Narasimhaswamy and Uttaran Bhattacharya and Xiang Chen and Ishita Dasgupta and Saayan Mitra and Minh Hoai}, 
+      title = {HanDiffuser: Text-to-Image Generation With Realistic Hand Appearances}, 
+      booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+      year = {2024}, 
+    }</code></pre>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
