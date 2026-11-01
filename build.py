@@ -103,7 +103,7 @@ def get_selected_work():
             'title': 'Zero-real Agent Policy (ZAP)',
             'desc': 'A 27B open model trained only in simulation that beats state-of-the-art VLAs and matches GPT-6 Astra on a real bimanual robot, while being 3× faster and 17× cheaper per task, with zero real-world training data.',
             'role': 'Core contributor',
-            'venue': 'Luma AI, 2026',
+            'venue': 'Luma AI (CoRL 2026)',
             'video': 'assets/img/work/zap.mp4',
             'poster': 'assets/img/work/zap_poster.jpg',
         },
